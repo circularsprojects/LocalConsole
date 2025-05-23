@@ -884,6 +884,10 @@ public class LCManager: NSObject, UIGestureRecognizerDelegate {
             self.clear()
         }
         
+        let hide = UIAction(title: "Hide", image: UIImage(systemName: "eye.slash"), attributes: .destructive) { _ in
+            self.isVisible.toggle()
+        }
+        
         var frameSymbol = "rectangle.3.offgrid"
         
         var debugActions: [UIMenuElement] = []
@@ -1099,6 +1103,8 @@ public class LCManager: NSObject, UIGestureRecognizerDelegate {
         if consoleTextView.text != "" {
             menuContent.append(UIMenu(title: "", options: .displayInline, children: [clear]))
         }
+        
+        menuContent.append(UIMenu(title: "", options: .displayInline, children: [hide]))
         
         return UIMenu(title: "", children: menuContent)
     }
