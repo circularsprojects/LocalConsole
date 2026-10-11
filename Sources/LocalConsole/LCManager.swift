@@ -875,7 +875,7 @@ public class LCManager: NSObject, UIGestureRecognizerDelegate {
         // If device is phone in landscape, disable resize controller.
         if UIDevice.current.userInterfaceIdiom == .phone && consoleViewController.view.frame.width > consoleViewController.view.frame.height {
             resize.attributes = .disabled
-            if #available(iOS 15, *) {
+            if #available(iOS 16, *) {
                 resize.subtitle = "Portrait Orientation Only"
             }
         }
@@ -984,7 +984,9 @@ public class LCManager: NSObject, UIGestureRecognizerDelegate {
                                 self.consoleViewController.present(alertController,
                                                             animated: true)
                             }
-                            action.subtitle = "\(value)"
+                            if #available(iOS 16, *) {
+                                action.subtitle = "\(value)"
+                            }
                             actions.append(action)
                         }
                     }
